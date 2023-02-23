@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1><a href='{{translated_article.link}}'>{{translated_article.title}}</a></h1>
+    <p>{{translated_article.date}} | {{translated_article.author}}</p>
+  <hr/>
+  {% for link in translated_article.links%} 
+  {% if link['href'] %}
+    <a href="{{ link['href'] }}">{{ link['text'] }}</a><br/>
+  
+  {% endif %} {% endfor %}
+  <hr/>
+  {% for p in translated_article.paragraphs%} 
+    <p>{{p}}</p>
+  {% endfor %}
+</hr>
+{% for img in translated_article.images%} 
+    <img src='{{img["src"]}}'/>
+{% endfor %}  
+
+<h2>---Orginal---</h2>
+<h1>{{org_article.title}}</h1>
+<p>{{org_article.date}} | {{org_article.author}}</p>
+
+{% for link in org_article.links%} 
+  {% if link['href'] %}
+    <a href="{{ link['href'] }}">{{ link['title'] }}</a>
+  
+  {% endif %} {% endfor %}
+
+
+{% for p in org_article.paragraphs%} 
+    <p>{{p}}</p>
+{% endfor %}
+
+
+
+<hr/>
+
+{% endblock %}
